@@ -1,4 +1,4 @@
-/* 基础样式与自然配色 */
+/* 1. 您的核心品牌样式 (头部、页脚、配色) */
 :root {
     --落叶金黄: #c5a053;
     --落叶金黄浅: #f3e9d2;
@@ -8,6 +8,8 @@
     --森林翠绿浅: #c8e6c9;
     --背景米白: #f9f7f1;
     --文字深灰: #333333;
+    --文字次要灰: #888;
+    --边框色: #eaeaea;
 }
 
 * {
@@ -35,7 +37,15 @@ body {
     padding: 0 20px;
 }
 
-/* === 头部区域 === */
+a {
+    color: var(--大海蔚蓝);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* === 头部区域 (保留您的设计) === */
 header {
     background: linear-gradient(135deg, var(--森林翠绿) 0%, var(--大海蔚蓝) 100%);
     color: white;
@@ -70,7 +80,6 @@ header::before {
     align-items: center;
 }
 
-/* 头像/图标样式 */
 .profile-img {
     width: 120px;
     height: 120px;
@@ -78,11 +87,9 @@ header::before {
     margin-bottom: 25px;
     border: 4px solid var(--落叶金黄浅);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    /* 背景色作为图片加载失败时的备用 */
     background-color: var(--落叶金黄浅);
 }
 
-/* 让头像图片完美填充圆形容器 */
 .profile-img img {
     width: 100%;
     height: 100%;
@@ -102,7 +109,6 @@ header::before {
     margin-bottom: 30px;
 }
 
-/* 导航栏样式 */
 .nav-links {
     display: flex;
     list-style: none;
@@ -125,6 +131,7 @@ header::before {
 
 .nav-links a:hover {
     color: white;
+    text-decoration: none;
 }
 
 .nav-links a::after {
@@ -143,14 +150,109 @@ header::before {
     width: 100%;
 }
 
-/* === 主要内容区域 === */
-.main-content {
+
+/* === 2. 新增的页面内容布局样式 === */
+.main-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     flex-grow: 1;
-    width: 100%;
-    padding: 40px 0;
 }
 
-/* === 页脚 === */
+/* 页面标题和搜索框 (用于 tags.html) */
+.page-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--边框色);
+}
+.search-box { position: relative; }
+.search-box .fa-search {
+    position: absolute;
+    left: 10px; top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+#search-input {
+    padding: 8px 8px 8px 30px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+}
+#search-input:focus { border-color: var(--大海蔚蓝); }
+
+/* 首页文章列表样式 */
+.minimal-post-item { margin-bottom: 40px; }
+.minimal-post-item h2 { font-size: 1.5rem; margin: 0; }
+.minimal-post-item h2 a {
+    color: var(--文字深灰);
+    transition: color 0.2s;
+}
+.minimal-post-item h2 a:hover {
+    color: var(--大海蔚蓝);
+    text-decoration: none;
+}
+.minimal-post-meta {
+    font-size: 0.9rem;
+    color: var(--文字次要灰);
+    margin-top: 5px;
+}
+.minimal-post-meta span { margin-right: 5px; }
+
+/* 分类页样式 (tags.html) */
+.tags-page-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+.tag-category-card, .search-results-card {
+    border: 1px solid var(--边框色);
+    padding: 20px;
+    border-radius: 5px;
+    border-left: 3px solid var(--森林翠绿浅);
+}
+.tag-category-card h3, .search-results-card h3 {
+    margin-top: 0;
+    border-bottom: 1px solid var(--边框色);
+    padding-bottom: 10px;
+    color: var(--森林翠绿);
+}
+.tag-category-card ul, .search-results-card ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+.tag-category-card li, .search-results-card li { padding: 5px 0; }
+
+/* 归档页样式 (archive.html) */
+.archive-year {
+    font-size: 1.8rem;
+    margin: 40px 0 20px;
+    color: var(--森林翠绿);
+}
+.archive-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--边框色);
+}
+.archive-date {
+    color: var(--文字次要灰);
+    flex-shrink: 0;
+    margin-left: 20px;
+}
+.archive-title:hover {
+    color: var(--文字深灰);
+    text-decoration: none;
+}
+
+
+/* === 页脚 (保留您的设计) === */
 footer {
     background: linear-gradient(135deg, var(--森林翠绿) 0%, var(--大海蔚蓝) 100%);
     color: white;
@@ -195,9 +297,7 @@ footer {
     padding: 0;
 }
 
-.footer-links li {
-    margin-bottom: 10px;
-}
+.footer-links li { margin-bottom: 10px; }
 
 .footer-links a {
     color: rgba(255, 255, 255, 0.8);
@@ -205,9 +305,7 @@ footer {
     transition: color 0.3s;
 }
 
-.footer-links a:hover {
-    color: white;
-}
+.footer-links a:hover { color: white; }
 
 .social-links {
     display: flex;
@@ -233,26 +331,8 @@ footer {
 }
 
 .copyright {
-    opacity: 0.7;
+    opacity: 0.8;
     font-size: 0.9rem;
     padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* === 响应式设计 === */
-@media (max-width: 768px) {
-    .blog-title {
-        font-size: 2.2rem;
-    }
-    .footer-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    .footer-section {
-        width: 100%;
-    }
-    .social-links {
-        justify-content: center;
-    }
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* 稍微调亮一点，以便在有 footer-content 时也可见 */
 }
