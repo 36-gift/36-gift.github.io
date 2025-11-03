@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>概率论笔记</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(90deg, #2c3e50, #4a6491);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .main-content {
+            flex: 3;
+            min-width: 300px;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #4a6491;
+            padding-bottom: 10px;
+            margin: 25px 0 15px;
+        }
+        
+        h3 {
+            color: #4a6491;
+            margin: 20px 0 10px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .formula {
+            background-color: #f1f5fd;
+            border-left: 4px solid #4a6491;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Cambria Math', serif;
+            font-size: 1.1rem;
+        }
+        
+        .example {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .nav-links {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .nav-links li {
+            margin-bottom: 10px;
+        }
+        
+        .nav-links a {
+            display: block;
+            padding: 10px 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #495057;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background-color: #4a6491;
+            color: white;
+        }
+        
+        .definition {
+            background-color: #e8f4f8;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        .theorem {
+            background-color: #fff8e1;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: white;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>概率论笔记</h1>
+            <p class="subtitle">Probability Theory Notes</p>
+        </header>
+        
+        <div class="content">
+            <aside class="sidebar">
+                <h3>目录</h3>
+                <ul class="nav-links">
+                    <li><a href="#basic-concepts">基本概念</a></li>
+                    <li><a href="#probability-axioms">概率公理</a></li>
+                    <li><a href="#conditional-probability">条件概率</a></li>
+                    <li><a href="#random-variables">随机变量</a></li>
+                    <li><a href="#distributions">概率分布</a></li>
+                    <li><a href="#expectation">数学期望</a></li>
+                    <li><a href="#law-large-numbers">大数定律</a></li>
+                </ul>
+                
+                <div class="card">
+                    <h3>重要公式</h3>
+                    <ul>
+                        <li>贝叶斯定理</li>
+                        <li>全概率公式</li>
+                        <li>期望值公式</li>
+                        <li>方差公式</li>
+                    </ul>
+                </div>
+            </aside>
+            
+            <main class="main-content">
+                <section id="basic-concepts">
+                    <h2>基本概念</h2>
+                    
+                    <div class="definition">
+                        <h3>样本空间 (Sample Space)</h3>
+                        <p>一个随机试验的所有可能结果的集合，通常用Ω表示。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <h3>事件 (Event)</h3>
+                        <p>样本空间的子集，即某些结果的集合。</p>
+                    </div>
+                    
+                    <div class="example">
+                        <h3>示例：掷骰子</h3>
+                        <p>样本空间: Ω = {1, 2, 3, 4, 5, 6}</p>
+                        <p>事件A（掷出偶数）: A = {2, 4, 6}</p>
+                    </div>
+                </section>
+                
+                <section id="probability-axioms">
+                    <h2>概率公理</h2>
+                    
+                    <div class="theorem">
+                        <h3>柯尔莫哥洛夫公理</h3>
+                        <ol>
+                            <li>非负性：对于任何事件A，P(A) ≥ 0</li>
+                            <li>规范性：P(Ω) = 1</li>
+                            <li>可列可加性：对于互斥事件A₁, A₂, ...，有P(∪Aᵢ) = ΣP(Aᵢ)</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>概率性质</h3>
+                        <ul>
+                            <li>P(∅) = 0</li>
+                            <li>P(Aᶜ) = 1 - P(A)</li>
+                            <li>如果A ⊆ B，则P(A) ≤ P(B)</li>
+                            <li>P(A ∪ B) = P(A) + P(B) - P(A ∩ B)</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section id="conditional-probability">
+                    <h2>条件概率</h2>
+                    
+                    <div class="formula">
+                        P(A|B) = P(A ∩ B) / P(B)，其中P(B) > 0
+                    </div>
+                    
+                    <div class="theorem">
+                        <h3>贝叶斯定理</h3>
+                        <div class="formula">
+                            P(A|B) = P(B|A) × P(A) / P(B)
+                        </div>
+                    </div>
+                    
+                    <div class="example">
+                        <h3>示例：疾病检测</h3>
+                        <p>假设一种疾病的患病率为1%，检测准确率为99%。如果一个人检测结果为阳性，求他实际患病的概率。</p>
+                        <p>解：使用贝叶斯定理，P(患病|阳性) ≈ 50%</p>
+                    </div>
+                </section>
+                
+                <section id="random-variables">
+                    <h2>随机变量</h2>
+                    
+                    <div class="definition">
+                        <h3>随机变量</h3>
+                        <p>定义在样本空间上的实值函数，将每个结果映射到一个实数。</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>随机变量类型</h3>
+                        <ul>
+                            <li><strong>离散随机变量</strong>：取值可数的随机变量</li>
+                            <li><strong>连续随机变量</strong>：取值充满一个区间的随机变量</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="example">
+                        <h3>示例</h3>
+                        <p>离散：掷骰子的点数</p>
+                        <p>连续：某地区年降雨量</p>
+                    </div>
+                </section>
+                
+                <section id="distributions">
+                    <h2>概率分布</h2>
+                    
+                    <div class="card">
+                        <h3>常见离散分布</h3>
+                        <ul>
+                            <li><strong>伯努利分布</strong>：单次试验，成功概率p</li>
+                            <li><strong>二项分布</strong>：n次独立伯努利试验的成功次数</li>
+                            <li><strong>泊松分布</strong>：单位时间内随机事件发生的次数</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>常见连续分布</h3>
+                        <ul>
+                            <li><strong>均匀分布</strong>：在区间[a,b]上等可能取值</li>
+                            <li><strong>正态分布</strong>：钟形曲线，广泛应用</li>
+                            <li><strong>指数分布</strong>：描述独立随机事件发生的时间间隔</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="formula">
+                        正态分布概率密度函数：f(x) = (1/√(2πσ²)) × e^(-(x-μ)²/(2σ²))
+                    </div>
+                </section>
+                
+                <section id="expectation">
+                    <h2>数学期望</h2>
+                    
+                    <div class="definition">
+                        <h3>期望值</h3>
+                        <p>随机变量取值的加权平均，权重为概率。</p>
+                    </div>
+                    
+                    <div class="formula">
+                        离散随机变量：E[X] = Σ xᵢ × P(X=xᵢ)
+                    </div>
+                    
+                    <div class="formula">
+                        连续随机变量：E[X] = ∫ x × f(x) dx
+                    </div>
+                    
+                    <div class="formula">
+                        方差：Var(X) = E[(X - E[X])²] = E[X²] - (E[X])²
+                    </div>
+                    
+                    <div class="example">
+                        <h3>示例：掷骰子的期望</h3>
+                        <p>E[X] = (1+2+3+4+5+6)/6 = 3.5</p>
+                    </div>
+                </section>
+                
+                <section id="law-large-numbers">
+                    <h2>大数定律</h2>
+                    
+                    <div class="theorem">
+                        <h3>大数定律</h3>
+                        <p>当试验次数足够多时，样本均值收敛于总体均值。</p>
+                    </div>
+                    
+                    <div class="formula">
+                        lim<sub>n→∞</sub> P(|X̄<sub>n</sub> - μ| < ε) = 1
+                    </div>
+                    
+                    <div class="example">
+                        <h3>示例：硬币投掷</h3>
+                        <p>随着投掷次数增加，正面朝上的频率越来越接近0.5</p>
+                    </div>
+                </section>
+            </main>
+        </div>
+        
+        <footer>
+            <p>概率论笔记 &copy; 2023 - 学习资源</p>
+        </footer>
+    </div>
+</body>
+</html>
