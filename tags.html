@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>分类 | Fallen's blog</title>
+    <!-- ... head 部分和 index.html 保持一致 ... -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="main-container">
+        <header class="minimal-header">
+             <!-- ... header 部分和 index.html 保持一致 ... -->
+             <img src="assets/images/avatar.jpg" alt="头像" class="minimal-avatar">
+             <h1>Fallen's blog</h1>
+             <p>浪漫一生，琴瑟和鸣</p>
+             <nav class="minimal-nav">
+                <a href="index.html">首页</a>
+                <a href="tags.html">分类</a>
+                <a href="archive.html">归档</a>
+                <a href="about.html">关于</a>
+             </nav>
+        </header>
+        
+        <div class="page-title">
+            <h2>Categories</h2>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="搜索文章标题或标签...">
+            </div>
+        </div>
+
+        <main id="tags-list-container" class="tags-page-grid">
+            <!-- JavaScript 将在这里动态生成标签分类列表 -->
+        </main>
+
+        <footer>
+            <!-- ... footer 和 index.html 保持一致 ... -->
+        </footer>
+    </div>
+    <script src="assets/js/database.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
