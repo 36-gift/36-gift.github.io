@@ -1,10 +1,9 @@
 # 网站基础信息
 title: Fallen's blog
 author: Fallen_leaves
-description: >- 
-  浪漫一生，琴瑟和鸣
-baseurl: "" 
-url: "https://36-gift.github.io" 
+description: >- 浪漫一生，琴瑟和鸣
+baseurl: "" # 保持为空
+url: "https://36-gift.github.io" # 你的网站最终的URL
 
 # 导航栏链接
 navigation:
@@ -17,16 +16,16 @@ navigation:
   - title: 关于
     url: /about
 
-# Jekyll Collections
+# Jekyll Collections: 定义“随笔”
 collections:
   notes:
     output: true
     permalink: /notes/:title/
 
-# Jekyll Defaults
+# Jekyll Defaults: 为不同类型内容设置默认布局
 defaults:
   - scope:
-      path: ""
+      path: "" 
       type: "posts"
     values:
       layout: "post"
@@ -40,3 +39,11 @@ defaults:
       type: "pages"
     values:
       layout: "page"
+
+# Jekyll Build settings
+theme: null
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/
