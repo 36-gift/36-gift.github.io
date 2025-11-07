@@ -2,7 +2,6 @@
 layout: page
 title: 随笔
 ---
-
 <div class="post-list simple-list">
   <ul>
     {% for note in site.notes %}
