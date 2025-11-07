@@ -1,1 +1,42 @@
+# 网站基础信息
+title: Fallen's blog
+author: Fallen_leaves
+description: >- 
+  浪漫一生，琴瑟和鸣
+baseurl: "" 
+url: "https://36-gift.github.io" 
 
+# 导航栏链接
+navigation:
+  - title: 文章
+    url: /articles
+  - title: 随笔
+    url: /notes
+  - title: 标签
+    url: /tags
+  - title: 关于
+    url: /about
+
+# Jekyll Collections
+collections:
+  notes:
+    output: true
+    permalink: /notes/:title/
+
+# Jekyll Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "notes"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
