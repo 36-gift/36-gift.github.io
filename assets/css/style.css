@@ -1,1 +1,111 @@
 
+
+
+/* ==========================================================================
+   新增样式 - 列表页和文章详情页
+   ========================================================================== */
+
+/* 列表页通用样式 (文章、随笔、标签) */
+.post-list ul, .tag-list ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.post-list li, .tag-list li {
+  margin-bottom: 15px;
+  font-size: 1.1em;
+}
+
+.post-list li a, .tag-list li a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.3s;
+}
+
+.post-list li a:hover, .tag-list li a:hover {
+  color: #007bff;
+}
+
+.post-date {
+  font-size: 0.8em;
+  color: #888;
+}
+
+.category-group h2, .tag-group h2 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+/* 随笔页的简洁列表样式 */
+.simple-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+
+/* 文章/页面 详情页样式 */
+.page-header, .post-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.page-title, .post-title {
+  font-size: 2.5em;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.post-meta {
+  color: #888;
+  font-size: 0.9em;
+}
+
+.page-content, .post-content {
+  line-height: 1.8;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.post-content h1, .post-content h2, .post-content h3 {
+  margin-top: 2em;
+}
+
+.post-content p {
+  margin-bottom: 1.2em;
+}
+
+.post-content a {
+  color: #007bff;
+  text-decoration: none;
+  border-bottom: 1px dotted #007bff;
+}
+
+.post-content a:hover {
+  border-bottom-style: solid;
+}
+
+.post-tags {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.post-tags a {
+  display: inline-block;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin: 0 5px;
+  font-size: 0.8em;
+  color: #555;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.post-tags a:hover {
+  background-color: #ddd;
+}
