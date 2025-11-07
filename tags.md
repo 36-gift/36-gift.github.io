@@ -2,9 +2,9 @@
 layout: page
 title: 标签
 ---
-
 <div class="tag-list">
-  {% for tag in site.tags %}
+  {% assign tags = site.tags | sort %}
+  {% for tag in tags %}
     <div class="tag-group">
       <h2 id="{{ tag[0] | cgi_escape }}">{{ tag[0] }}</h2>
       <ul>
