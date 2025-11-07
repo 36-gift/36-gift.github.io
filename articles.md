@@ -2,13 +2,13 @@
 layout: page
 title: 文章
 ---
-
 <div class="post-list">
-  {% for category in site.categories %}
+  {% assign categories = site.posts | group_by: "categories" %}
+  {% for category in categories %}
     <div class="category-group">
-      <h2 id="{{ category[0] | cgi_escape }}">{{ category[0] }}</h2>
+      <h2 id="{{ category.name | cgi_escape }}">{{ category.name }}</h2>
       <ul>
-        {% for post in category[1] %}
+        {% for post in category.items %}
           <li>
             <a href="{{ post.url | relative_url }}">
               {{ post.title }}
